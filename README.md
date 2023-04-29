@@ -1,6 +1,6 @@
 # Podcast Summary API
 
-This API provides summaries of podcast episodes using OpenAI's GPT-3 language model.
+This API provides summaries of any podcast episode using OpenAI's GPT-3 language model.
 
 ## Prerequisites
 
