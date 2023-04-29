@@ -14,11 +14,6 @@ logs/
 *.js.map
 out/
 
-# Editor files
-.vscode/
-.idea/
-*.iml
-
 # Dependencies
 package-lock.json
 yarn.lock
