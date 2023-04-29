@@ -1,0 +1,26 @@
+ Directories
+node_modules/
+dist/
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+
+# Build files
+*.d.ts
+*.js.map
+out/
+
+# Editor files
+.vscode/
+.idea/
+*.iml
+
+# Dependencies
+package-lock.json
+yarn.lock
+npm-debug.log*
+yarn-error.log*
