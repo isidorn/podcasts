@@ -54,7 +54,7 @@ app.get('/episodes/:id/summary', async (req: Request, res: Response) => {
 });
 
 app.get('/', (req: Request, res: Response) => {
-	res.send('Express + TypeScript Server');
+	res.send('Friendly Podcast Server is running!');
 });
 
 // OpenAPI routes
