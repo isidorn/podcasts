@@ -7,6 +7,7 @@ const openApiSpecification = require('../.well-known/openapi.json');
 
 export default express;
 const app = express();
+const categoryId = 'a5ae013c-14a1-4c2d-a731-47fbbd0ba527';
 app.use(cors());
 dotenv.config();
 
@@ -28,7 +29,8 @@ interface Episode {
 app.use('/.well-known', express.static('.well-known'));
 app.get('/shows', async (_req: Request, res: Response) => {
 	const params = new URLSearchParams({
-		limit: '8'
+		limit: '6',
+		categoryId
 	});
 	const response = await fetch(`${process.env.PODCAST_URL}shows?${params}`); 
 	const json = await response.json();
