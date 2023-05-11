@@ -60,35 +60,6 @@
         }
       }
     },
-    "/episodes/{id}": {
-      "get": {
-        "summary": "Get an episode by id",
-        "operationId": "getEpisodeById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "The ID of the episode to retrieve",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The requested episode",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Episode"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/episodes/{id}/summary": {
       "get": {
         "summary": "Get a summary of an episode",

@@ -41,12 +41,6 @@ app.get('/shows/:id', async (req: Request, res: Response) => {
 	res.send(json);
 });
 
-app.get('/episodes/:id', async (req: Request, res: Response) => {
-	const response = await fetch(`${process.env.PODCAST_URL}episodes/${req.params.id}`);
-	const json: Episode = await response.json();
-	res.send(json);
-});
-
 app.get('/episodes/:id/summary', async (req: Request, res: Response) => {
 	const response = await fetch(`${process.env.PODCAST_URL}episodes/${req.params.id}`);
 	let summary = '';
