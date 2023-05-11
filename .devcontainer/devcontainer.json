@@ -13,9 +13,7 @@
 		// Configure properties specific to VS Code.
 		"vscode": {
 			"settings": {},
-			"extensions": [
-				"GitHub.copilot"
-			]
+			"extensions": []
 		}
 	},
 
