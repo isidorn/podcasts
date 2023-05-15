@@ -6,7 +6,7 @@ import cors from 'cors';
 const openApiSpecification = require('../.well-known/openapi.json');
 
 export default express;
-const app = express();
+export const app = express();
 const categoryId = 'a5ae013c-14a1-4c2d-a731-47fbbd0ba527';
 app.use(cors());
 dotenv.config();
