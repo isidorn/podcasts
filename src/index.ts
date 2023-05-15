@@ -27,6 +27,8 @@ interface Episode {
 }
 
 app.use('/.well-known', express.static('.well-known'));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiSpecification));
+
 app.get('/shows', async (_req: Request, res: Response) => {
 	const params = new URLSearchParams({
 		limit: '6',
@@ -59,8 +61,6 @@ app.get('/', (_req: Request, res: Response) => {
 	res.send('Friendly Podcast Server is running!');
 });
 
-// OpenAPI routes
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiSpecification));
 app.use(
 	OpenApiValidator.middleware({
 		apiSpec: './.well-known/openapi.json',
