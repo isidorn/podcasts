@@ -30,6 +30,7 @@ interface Episode {
 app.use('/.well-known', express.static('.well-known'));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiSpecification));
 
+// Gets the list of shows
 app.get('/shows', async (_req: Request, res: Response) => {
     const params = new URLSearchParams({
         limit: '6',
@@ -40,12 +41,14 @@ app.get('/shows', async (_req: Request, res: Response) => {
     res.send(json);
 });
 
+// Gets the details of a show
 app.get('/shows/:id', async (req: Request, res: Response) => {
     const response = await fetch(`${podcastApiUrl}shows/${req.params.id}`);
     const json: Show = await response.json();
     res.send(json);
 });
 
+// Gets the summary of an episode
 app.get('/episodes/:id/summary', (req: Request, res: Response) => {
     fetch(`${process.env.PODCAST_URL}episodes/${req.params.id}`).then((response) => {
         response.json().then((json: Episode) => {
