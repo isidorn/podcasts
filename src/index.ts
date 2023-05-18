@@ -8,6 +8,7 @@ const openApiSpecification = require('../.well-known/openapi.json');
 export default express;
 const app = express();
 const categoryId = 'a5ae013c-14a1-4c2d-a731-47fbbd0ba527';
+const podcastApiUrl = 'https://ca-api-2ib46ponsk34o.yellowhill-c8bb1861.eastus2.azurecontainerapps.io/';
 app.use(cors());
 dotenv.config();
 
@@ -34,13 +35,13 @@ app.get('/shows', async (_req: Request, res: Response) => {
         limit: '6',
         categoryId
     });
-    const response = await fetch(`${process.env.PODCAST_URL}shows?${params}`); 
+    const response = await fetch(`${podcastApiUrl}shows?${params}`); 
     const json = await response.json();
     res.send(json);
 });
 
 app.get('/shows/:id', async (req: Request, res: Response) => {
-    const response = await fetch(`${process.env.PODCAST_URL}shows/${req.params.id}`);
+    const response = await fetch(`${podcastApiUrl}shows/${req.params.id}`);
     const json: Show = await response.json();
     res.send(json);
 });
