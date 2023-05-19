@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://isidorn-super-duper-space-fiesta-p7p5jvrvv92rrp9-8080.preview.app.github.dev"
+      "url": "$host"
     }
   ],
   "paths": {
