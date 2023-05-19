@@ -30,6 +30,7 @@ interface Episode {
     published: string;
 }
 
+// Serve the .well-known folder, and replace the $host variable in the files
 app.use('/.well-known', (req, res, next) => {
     const filePath = '.well-known' + req.path;
     if (path.extname(filePath) !== '.json') {
