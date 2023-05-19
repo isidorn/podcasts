@@ -3,6 +3,9 @@ import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import * as OpenApiValidator from 'express-openapi-validator';
 import cors from 'cors';
+import path from 'path';
+import fs from 'fs';
+
 const openApiSpecification = require('../.well-known/openapi.json');
 
 export default express;
@@ -27,7 +30,18 @@ interface Episode {
     published: string;
 }
 
-app.use('/.well-known', express.static('.well-known'));
+app.use('/.well-known', (req, res, next) => {
+    const filePath = '.well-known' + req.path;
+    if (path.extname(filePath) !== '.json') {
+        return express.static('.well-known')(req, res, next);
+    }
+
+    fs.readFile(filePath, 'utf8', (_err: any, data: string) => {
+        const url = `https://${req.headers['x-forwarded-host']}`;
+        const modifiedData = data.replace(/\$host/g, url);
+        res.send(JSON.parse(modifiedData));
+    });
+});
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiSpecification));
 
 // Gets the list of shows
