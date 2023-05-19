@@ -60,20 +60,23 @@ app.get('/shows', async (_req: Request, res: Response) => {
 app.get('/shows/:id', async (req: Request, res: Response) => {
     const response = await fetch(`${podcastApiUrl}shows/${req.params.id}`);
     const json: Show = await response.json();
+    if (req.headers['user-agent'].includes('ChatGPT')) {
+        json.episodes = json.episodes.slice(0, 20);
+    }
     res.send(json);
 });
 
 // Gets the summary of an episode
-app.get('/episodes/:id/summary', (req: Request, res: Response) => {
-    fetch(`${process.env.PODCAST_URL}episodes/${req.params.id}`).then((response) => {
-        response.json().then((json: Episode) => {
-            const summary = json.description;
-            res.send({ summary });
-        });
-    }, (error) => { 
+app.get('/episodes/:id/summary', async (req: Request, res: Response) => {
+    try {
+        const response = await fetch(`${process.env.PODCAST_URL}episodes/${req.params.id}`);
+        const json: Episode = await response.json();
+        const summary = json.description;
+        res.send({ summary });
+    } catch (error) {
         console.log(error);
         res.status(500).send({ error });
-    });
+    }
 });
 
 app.get('/', (_req: Request, res: Response) => {

@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Podcasts",
+    "name_for_model": "PODCASTS",
+    "description_for_human": "Retrieve and summarise your favourite tech podcasts.",
+    "description_for_model": "Plugin that lists and summarises tech podcasts.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "$host/.well-known/openapi.json",
+        "is_user_authenticated": "false"
+    },
+    "logo_url": "$host/.well-known/logo.png",
+    "contact_email": "inikolic@microsoft.com",
+    "legal_info_url": "https://learn.microsoft.com/en-us/legal/"
+}
