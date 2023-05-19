@@ -13,8 +13,7 @@
             "program": "${workspaceFolder}/out/index.js",
             "outFiles": [
                 "${workspaceFolder}/out/*.js"
-            ],
-            "internalConsoleOptions": "openOnSessionStart"
+            ]
         }
     ]
 }
